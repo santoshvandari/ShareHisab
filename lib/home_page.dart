@@ -13,7 +13,11 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Share Hisab"),
+          title: const Text(
+            "Share Hisab",
+            style: TextStyle(color: Colors.white),
+          ),
+          centerTitle: true,
         ),
         body: const Text("Hello, World!"),
       ),
