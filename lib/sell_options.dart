@@ -68,19 +68,21 @@ class SellOptions extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 50,
-                    vertical: 10,
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 50,
+                      vertical: 10,
+                    ),
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    foregroundColor: Colors.white,
                   ),
-                  backgroundColor: Theme.of(context).colorScheme.primary,
-                  foregroundColor: Colors.white,
-                ),
-                child: const Text(
-                  "Calculate",
-                  style: TextStyle(fontSize: 18),
+                  child: const Text(
+                    "Calculate",
+                    style: TextStyle(fontSize: 18),
+                  ),
                 ),
               ),
             ],
