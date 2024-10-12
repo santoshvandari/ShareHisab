@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sharehisab/buy_options.dart';
 import 'package:sharehisab/buy_results.dart';
+import 'package:sharehisab/sell_options.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,6 +24,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           centerTitle: true,
+          backgroundColor: Theme.of(context).colorScheme.primary,
         ),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -82,9 +84,9 @@ class _HomePageState extends State<HomePage> {
                   },
                 ),
                 const SizedBox(height: 20),
-                const BuyOptions(),
+                const SellOptions(),
                 const SizedBox(height: 30),
-                const BuyResults(),
+                // const BuyResults(),
               ],
             ),
           ),
