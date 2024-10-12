@@ -38,29 +38,49 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
+                // Dropdown Button with white background and border
+                DropdownButtonFormField<String>(
+                  dropdownColor: Colors.white,
+                  value: "Buy",
+                  style: const TextStyle(
+                    fontSize: 18,
                   ),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-                  child: DropdownButtonFormField<String>(
-                    dropdownColor: Colors.white,
-                    value: "Buy Calculation",
-                    items: const [
-                      DropdownMenuItem(
-                        value: "Buy Calculation",
-                        child: Text("Buy Calculation"),
-                      ),
-                      DropdownMenuItem(
-                        value: "Sell Calculation",
-                        child: Text("Sell Calculation"),
-                      ),
-                    ],
-                    onChanged: (value) {},
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(color: Colors.white), // White border
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Colors.white), // White border when focused
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
+                  items: const [
+                    DropdownMenuItem(
+                      value: "Buy",
+                      child: Text("Buy Calculation",
+                          style: TextStyle(
+                              color: Colors.black)), // Text color in dropdown
+                    ),
+                    DropdownMenuItem(
+                      value: "Sell",
+                      child: Text("Sell Calculation",
+                          style: TextStyle(
+                              color: Colors.black)), // Text color in dropdown
+                    ),
+                  ],
+                  onChanged: (value) {
+                    debugPrint(value);
+                  },
                 ),
+                const SizedBox(height: 20),
                 const BuyOptions(),
               ],
             ),

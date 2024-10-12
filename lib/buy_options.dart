@@ -7,15 +7,15 @@ class BuyOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Container(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Text(
                 "Buy Calculation",
@@ -23,12 +23,12 @@ class BuyOptions extends StatelessWidget {
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
+                textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
               TextFormField(
                 decoration: const InputDecoration(
                   labelText: "Buying Price *",
-                  border: OutlineInputBorder(),
                 ),
                 keyboardType: TextInputType.number,
               ),
@@ -36,20 +36,26 @@ class BuyOptions extends StatelessWidget {
               TextFormField(
                 decoration: const InputDecoration(
                   labelText: "Quantity *",
-                  border: OutlineInputBorder(),
                 ),
                 keyboardType: TextInputType.number,
+                onChanged: (value) {
+                  debugPrint(value);
+                },
               ),
               const SizedBox(height: 20),
-              SizedBox(
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue[900],
-                    padding: const EdgeInsets.symmetric(vertical: 15),
-                    textStyle: const TextStyle(fontSize: 18),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 50,
+                    vertical: 10,
                   ),
-                  child: const Text("Calculate"),
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  foregroundColor: Colors.white,
+                ),
+                child: const Text(
+                  "Calculate",
+                  style: TextStyle(fontSize: 18),
                 ),
               ),
             ],

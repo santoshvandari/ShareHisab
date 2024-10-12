@@ -17,6 +17,7 @@ class ShareHisab extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color.fromRGBO(35, 78, 112, 1),
           surface: const Color.fromRGBO(35, 78, 112, 1),
+          primary: const Color.fromRGBO(35, 78, 112, 1),
         ),
         useMaterial3: true,
         textTheme: const TextTheme(
@@ -24,6 +25,9 @@ class ShareHisab extends StatelessWidget {
             fontWeight: FontWeight.bold,
             fontSize: 35,
           ),
+        ),
+        inputDecorationTheme: const InputDecorationTheme(
+          border: OutlineInputBorder(),
         ),
       ),
       home: const HomePage(),
