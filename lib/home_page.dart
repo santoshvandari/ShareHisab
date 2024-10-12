@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sharehisab/buy_options.dart';
+import 'package:sharehisab/buy_results.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -82,6 +83,8 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const SizedBox(height: 20),
                 const BuyOptions(),
+                const SizedBox(height: 30),
+                const BuyResults(),
               ],
             ),
           ),
