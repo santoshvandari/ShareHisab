@@ -12,6 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool isSell = true;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -82,14 +83,16 @@ class _HomePageState extends State<HomePage> {
                   ],
                   onChanged: (value) {
                     debugPrint(value);
+                    setState(() {
+                      value == "Buy" ? isSell = false : isSell = true;
+                    });
                   },
                 ),
                 const SizedBox(height: 20),
-                // const SellOptions(),
-                const BuyOptions(),
+                isSell ? const SellOptions() : const BuyOptions(),
                 const SizedBox(height: 30),
                 // const BuyResults(),
-                const SellResults(),
+                // const SellResults(),
               ],
             ),
           ),
