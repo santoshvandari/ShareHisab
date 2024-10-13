@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
-class SellOptions extends StatelessWidget {
-  const SellOptions({super.key});
+class SellOptions extends StatefulWidget {
+  final VoidCallback onCalculate;
 
+  const SellOptions({super.key, required this.onCalculate});
+
+  @override
+  State<SellOptions> createState() => _SellOptionsState();
+}
+
+class _SellOptionsState extends State<SellOptions> {
   @override
   Widget build(BuildContext context) {
     double temp = 0.0;
@@ -48,12 +55,12 @@ class SellOptions extends StatelessWidget {
                 value: "7.5",
                 items: const [
                   DropdownMenuItem(
-                    child: Text("5%"),
                     value: "5",
+                    child: Text("5%"),
                   ),
                   DropdownMenuItem(
-                    child: Text("7.5%"),
                     value: "7.5",
+                    child: Text("7.5%"),
                   ),
                 ],
                 onChanged: (value) {
