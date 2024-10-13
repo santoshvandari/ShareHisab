@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sharehisab/buy_global_variables.dart';
+import 'package:sharehisab/global_variables/buy_global_variables.dart';
 
 class BuyResults extends StatelessWidget {
   const BuyResults({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sharehisab/buy_global_variables.dart';
-import 'package:sharehisab/sell_gloabl_variables.dart';
-import 'package:sharehisab/sellbuy_calculation.dart';
+import 'package:sharehisab/global_variables/buy_global_variables.dart';
+import 'package:sharehisab/global_variables/sell_gloabl_variables.dart';
+import 'package:sharehisab/buy_sell_calculation/sellbuy_calculation.dart';
 
 class SellOptions extends StatefulWidget {
   final VoidCallback onCalculate;
