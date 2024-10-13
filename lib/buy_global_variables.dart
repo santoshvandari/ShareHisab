@@ -1,5 +1,5 @@
-late double buyPrice = 10000000;
-late double buyQuantity = 1000000;
+late double buyPrice;
+late double buyQuantity;
 late double buyTotalvalue;
 late double buySebonFee;
 late double buyBrokerCommission;
