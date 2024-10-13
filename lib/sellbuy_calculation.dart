@@ -1,4 +1,5 @@
 import 'package:sharehisab/buy_global_variables.dart';
+import 'package:sharehisab/sell_gloabl_variables.dart';
 
 const double sebonFeePercentage = 0.015;
 double calculateBrokerCommission(double amount) {
@@ -36,4 +37,20 @@ void buyCalculation() {
   buySebonFee = calculateSebonFee(buyTotalvalue);
   buyBrokerCommission = calculateBrokerCommission(buyTotalvalue);
   buyTotalPayable = calculateTotalAmount(buyPrice, buyQuantity);
+}
+
+void sellCalculation() {
+  sellTotalvalue = sellPrice * sellQuantity;
+  double totalSellBuyPrice = calculateTotalAmount(sellBuyPrice, sellQuantity);
+  sellSebonFee = calculateSebonFee(sellTotalvalue);
+  sellBrokerCommission = calculateBrokerCommission(sellTotalvalue);
+  double tempSellTotalReceivable =
+      sellTotalvalue - 25 - sellSebonFee - sellBrokerCommission;
+  double tempProfitOrLosss = tempSellTotalReceivable - totalSellBuyPrice;
+  sellCapitalGainTax = tempProfitOrLosss > 0
+      ? tempProfitOrLosss * capitalGainTaxPercentage / 100
+      : 0;
+  profitOrLoss = tempProfitOrLosss - sellCapitalGainTax;
+  returnOnInvestment = (profitOrLoss / totalSellBuyPrice) * 100;
+  sellTotalReceivable = tempSellTotalReceivable - sellCapitalGainTax;
 }
