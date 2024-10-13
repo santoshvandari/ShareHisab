@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:sharehisab/buy_global_variables.dart';
+import 'package:sharehisab/sellbuy_calculation.dart';
 
-class BuyOptions extends StatelessWidget {
-  const BuyOptions({super.key});
+class BuyOptions extends StatefulWidget {
+  final VoidCallback onCalculate;
+  const BuyOptions({super.key, required this.onCalculate});
+
+  @override
+  State<BuyOptions> createState() => _BuyOptionsState();
+}
+
+class _BuyOptionsState extends State<BuyOptions> {
+  // Controllers for the text fields
+  final TextEditingController buyingPriceController = TextEditingController();
+  final TextEditingController quantityController = TextEditingController();
+
+  // Error message
+  String? errorMessage;
 
   @override
   Widget build(BuildContext context) {
-    double dataStorage = 0;
     return Column(
       children: [
         const SizedBox(height: 20),
@@ -29,12 +43,31 @@ class BuyOptions extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              textFormFieldDesign("Buying Price", dataStorage),
-              textFormFieldDesign("Quantity", dataStorage),
+
+              // Display the error message if it exists
+              if (errorMessage != null) ...[
+                Text(
+                  errorMessage!,
+                  style: const TextStyle(color: Colors.red, fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+              ],
+
+              textFormFieldDesign("Buying Price", buyingPriceController),
+              textFormFieldDesign("Quantity", quantityController),
               const SizedBox(height: 20),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // Validate input fields
+                    if (_validateInputs()) {
+                      // Perform calculations if inputs are valid
+                      buyCalculation(); // Call your calculation function
+                      debugPrint("Buy Calculation");
+                      isBuyCalculation = true;
+                      widget.onCalculate(); // Notify the parent widget
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 50,
@@ -56,7 +89,36 @@ class BuyOptions extends StatelessWidget {
     );
   }
 
-  Widget textFormFieldDesign(String label, double dataStorage) {
+  // Method to validate inputs
+  bool _validateInputs() {
+    setState(() {
+      errorMessage = null; // Reset error message
+    });
+
+    // Check if fields are empty
+    if (buyingPriceController.text.isEmpty || quantityController.text.isEmpty) {
+      setState(() {
+        errorMessage = "All fields are required."; // Set error message
+      });
+      return false; // Return false for invalid inputs
+    }
+
+    // Parse values and set global variables
+    try {
+      buyPrice = double.parse(buyingPriceController.text);
+      buyQuantity = double.parse(quantityController.text);
+    } catch (e) {
+      setState(() {
+        errorMessage = "Please enter valid numbers."; // Handle parsing error
+      });
+      return false; // Return false for invalid numbers
+    }
+
+    return true; // Return true for valid inputs
+  }
+
+  // Updated textFormFieldDesign to accept controllers
+  Widget textFormFieldDesign(String label, TextEditingController controller) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -69,13 +131,11 @@ class BuyOptions extends StatelessWidget {
           ),
         ),
         TextFormField(
+          controller: controller, // Assign the controller
           decoration: InputDecoration(
             hintText: "Enter $label",
           ),
           keyboardType: TextInputType.number,
-          onChanged: (value) {
-            debugPrint(value);
-          },
         ),
         const SizedBox(height: 10),
       ],
