@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sharehisab/buy_global_variables.dart';
+import 'package:sharehisab/sell_gloabl_variables.dart';
 import 'package:sharehisab/sellbuy_calculation.dart';
 
 class BuyOptions extends StatefulWidget {
@@ -17,6 +18,14 @@ class _BuyOptionsState extends State<BuyOptions> {
 
   // Error message
   String? errorMessage;
+
+  @override
+  void dispose() {
+    // Dispose controllers when the widget is removed from the tree
+    buyingPriceController.dispose();
+    quantityController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,19 +62,23 @@ class _BuyOptionsState extends State<BuyOptions> {
                 const SizedBox(height: 10),
               ],
 
+              // Fields for buying price and quantity
               textFormFieldDesign("Buying Price", buyingPriceController),
               textFormFieldDesign("Quantity", quantityController),
+
               const SizedBox(height: 20),
+
+              // Calculate button
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    // Validate input fields
                     if (_validateInputs()) {
                       // Perform calculations if inputs are valid
                       buyCalculation(); // Call your calculation function
-                      debugPrint("Buy Calculation");
                       isBuyCalculation = true;
+                      isSellCalculation = false;
                       widget.onCalculate(); // Notify the parent widget
+                      _resetFields(); // Reset fields after calculation
                     }
                   },
                   style: ElevatedButton.styleFrom(
@@ -87,6 +100,14 @@ class _BuyOptionsState extends State<BuyOptions> {
         ),
       ],
     );
+  }
+
+  // Method to reset the fields after the calculation is done
+  void _resetFields() {
+    setState(() {
+      buyingPriceController.clear();
+      quantityController.clear();
+    });
   }
 
   // Method to validate inputs
@@ -134,6 +155,9 @@ class _BuyOptionsState extends State<BuyOptions> {
           controller: controller, // Assign the controller
           decoration: InputDecoration(
             hintText: "Enter $label",
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
           ),
           keyboardType: TextInputType.number,
         ),
