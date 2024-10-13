@@ -1,5 +1,5 @@
-import 'package:sharehisab/buy_global_variables.dart';
-import 'package:sharehisab/sell_gloabl_variables.dart';
+import 'package:sharehisab/global_variables/buy_global_variables.dart';
+import 'package:sharehisab/global_variables/sell_gloabl_variables.dart';
 
 const double sebonFeePercentage = 0.015;
 double calculateBrokerCommission(double amount) {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sharehisab/sell_gloabl_variables.dart';
+import 'package:sharehisab/global_variables/sell_gloabl_variables.dart';
 
 class SellResults extends StatelessWidget {
   const SellResults({super.key});
