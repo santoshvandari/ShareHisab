@@ -3,7 +3,7 @@ import 'package:sharehisab/global_variables/buy_global_variables.dart';
 import 'package:sharehisab/options_ui/buy_options.dart';
 import 'package:sharehisab/results_ui/buy_results.dart';
 import 'package:sharehisab/global_variables/sell_gloabl_variables.dart';
-import 'package:sharehisab/global_variables/sell_options.dart';
+import 'package:sharehisab/options_ui/sell_options.dart';
 import 'package:sharehisab/results_ui/sell_results.dart';
 
 class HomePage extends StatefulWidget {
