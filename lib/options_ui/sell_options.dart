@@ -76,6 +76,7 @@ class _SellOptionsState extends State<SellOptions> {
               ),
               const SizedBox(height: 10),
               DropdownButtonFormField<String>(
+                dropdownColor: Colors.white,
                 value: capitalGainTaxPercentage == 5.0 ? "5" : "7.5",
                 items: const [
                   DropdownMenuItem(value: "5", child: Text("5%")),
